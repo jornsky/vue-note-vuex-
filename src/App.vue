@@ -1,28 +1,48 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <Notes></Notes>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import 'semantic-ui-css/semantic.min.css'
+import Notes from './components/Notes'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Notes    
+}
+
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.notes{
+    margin-top: 32px;
+}
+
+.notes .ui textarea{
+    border: none;
+    font-size: 16px;
+    padding: 0;
+    margin: 32px 1px;
+
+}
+
+.ui .items > .item > .content > .header {
+    display: block;
+    cursor: pointer;
+}
+
+.ui .items > .item > .meta{
+     width: 88px;
+     color: black;
+     margin-top: 0px;
+     margin-bottom: 16px;     
+}
+
+.icon {
+    cursor: pointer;
 }
 </style>
