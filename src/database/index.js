@@ -1,8 +1,5 @@
 import Loki from 'lokijs'
-
-
 // 配置数据库 游览器的localstorage
-
 export const db = new Loki('notes',{
     autoload:true,
     autoloadCallback:databaseInit,
@@ -10,7 +7,6 @@ export const db = new Loki('notes',{
     autosaveInterval:3000,
     persistenceMethod:'localStorage'
 })
-
 
 function databaseInit () {
 
@@ -33,9 +29,6 @@ export function  loadCollection (collection) {
                 resolve(_collection)
             })
         }
-
-
-
     )
 
 }

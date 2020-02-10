@@ -1,22 +1,23 @@
 <template>
     <div class="item">
         <div class="meta">
-            {{'updated'}}
+            {{updated(entity)}}
         </div>
 
         <div class="content">
-                <div class="header">
-                    {{ entity.body || '新建文件'}}
+                <div class="header" v-on:click="flag = !flag">
+                    {{ header(entity) || '新建文件'}}
                 </div>
 
                 <div class="extra">
-                    <editor>
+                    <editor v-bind:entity="entity"
+                    v-if="flag">
                     
                     </editor>
 
-                    {{ 'words'}} 字
+                    {{ words(entity)}} 字
 
-                    <i class="right floated icon"> 删除</i>
+                    <i class="right floated icon" v-on:click="destory(entity)"> 删除</i>
                 </div>
         </div>
 </div>
@@ -24,10 +25,31 @@
 
 <script>
 import Editor from './Editor'
+import { mapGetters, mapActions } from 'vuex' 
+
 export default {
+
+  data(){
+        return {
+            flag:false
+        }
+    },
   props:[
     'entity'
   ],
+  computed:{
+    ...mapGetters([
+      'updated',
+      'words',
+      'header'
+      ])
+    },
+  
+  methods:{
+    ...mapActions([
+      'destory'
+    ])
+  },
 
   components:{
     Editor
